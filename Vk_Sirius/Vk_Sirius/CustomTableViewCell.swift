@@ -32,11 +32,11 @@ class CustomTableViewCell: UITableViewCell {
         return label
     }()
     
-    lazy private var imageViewService: UIImageView = {
-        let image = UIImageView()
+    lazy var imageViewService: CustomImageViewAPI = {
+        let image = CustomImageViewAPI()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.clipsToBounds = true
-        image.layer.cornerRadius = 15
+        image.layer.cornerRadius = 13
         return image
     }()
     
@@ -53,7 +53,8 @@ class CustomTableViewCell: UITableViewCell {
     func textForEachCell(nameService: String, descriptionService: String, imageService: String) {
         labelNameService.text = nameService
         labelDescriptionService.text = descriptionService
-        imageViewService.image = UIImage(named: imageService)
+       // imageViewService.image = UIImage(named: imageService)
+       // imageViewService.image.
     }
 
 }
@@ -66,8 +67,8 @@ extension CustomTableViewCell {
         NSLayoutConstraint.activate([
             imageViewService.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             imageViewService.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            imageViewService.heightAnchor.constraint(equalToConstant: 55),
-            imageViewService.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -7),
+            imageViewService.heightAnchor.constraint(equalToConstant: 58),
+            imageViewService.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -10),
             imageViewService.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/7),
             
             labelNameService.topAnchor.constraint(equalTo: imageViewService.topAnchor),
