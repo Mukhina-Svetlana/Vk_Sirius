@@ -67,7 +67,7 @@ extension CustomTableViewCell {
         NSLayoutConstraint.activate([
             imageViewService.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             imageViewService.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            imageViewService.heightAnchor.constraint(equalToConstant: 58),
+            imageViewService.heightAnchor.constraint(equalToConstant: 55),
             imageViewService.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -10),
             imageViewService.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/7),
             
