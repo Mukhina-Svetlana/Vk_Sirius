@@ -8,17 +8,15 @@
 import UIKit
 
 class MainViewController: UIViewController {
-//    var models: [Model] = [ Model(labelService: "Vk", descriptionService: "gggbgbgvfvfv vffvf", imageService: "vk"), Model(labelService: "Ula", descriptionService: "ggbfvfvfv  bbfbfvdcdcdvbb vggvggvfh hvhfvfhv vhfvbfhv hvujbfjvb hvfjvbfjv gtvghjgbvgjvbgv vngjbn", imageService: "ula")
-//    ]
-    var models = [Model]()
-    var images = [UIImage]()
+    
+    private var models = [Model]()
+    private var images = [UIImage]()
     private lazy var cellIdentity = "cell"
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.rowHeight = UITableView.automaticDimension
-      //  tableView.backgroundColor = .white
         tableView.estimatedRowHeight = 75
         tableView.separatorStyle = .none
         tableView.dataSource = self
@@ -30,8 +28,6 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configuration()
-        
-
     }
     
     override func viewWillLayoutSubviews() {
@@ -58,7 +54,6 @@ extension MainViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
         
-        
         NetworkServices.shared.getData(completion: { model in
             self.models = model
             DispatchQueue.main.async {
@@ -67,21 +62,22 @@ extension MainViewController {
         })
     }
 }
+
 extension MainViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         models.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentity, for: indexPath) as? CustomTableViewCell else {return UITableViewCell()}
-        cell.textForEachCell(nameService: models[indexPath.row].labelService, descriptionService: models[indexPath.row].descriptionService, imageService: models[indexPath.row].imageService)
+        cell.textForEachCell(nameService: models[indexPath.row].labelService, descriptionService: models[indexPath.row].descriptionService)
         cell.imageViewService.set(imageURL: models[indexPath.row].imageService) { [weak self] image in
             self?.images.append(image)
         }
         cell.accessoryType = .disclosureIndicator
         return cell
     }
-   
-    
 }
 
 extension MainViewController: UITableViewDelegate {
@@ -91,9 +87,7 @@ extension MainViewController: UITableViewDelegate {
                     application.open(url, options: [:], completionHandler: nil)
                 } else if let itunesUrl = URL(string: models[indexPath.row].link), application.canOpenURL(itunesUrl) {
                    application.open(itunesUrl, options: [:], completionHandler: nil)
-
                 }
-        print(models[indexPath.row].labelService)
     }
 }
 

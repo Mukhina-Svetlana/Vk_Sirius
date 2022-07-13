@@ -17,7 +17,6 @@ class CustomTableViewCell: UITableViewCell {
         label.font = .systemFont(ofSize: 18)
         label.textAlignment = .left
         label.textColor = .white
-       // label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
@@ -50,11 +49,9 @@ class CustomTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func textForEachCell(nameService: String, descriptionService: String, imageService: String) {
+    func textForEachCell(nameService: String, descriptionService: String) {
         labelNameService.text = nameService
         labelDescriptionService.text = descriptionService
-       // imageViewService.image = UIImage(named: imageService)
-       // imageViewService.image.
     }
 
 }
@@ -73,14 +70,12 @@ extension CustomTableViewCell {
             
             labelNameService.topAnchor.constraint(equalTo: imageViewService.topAnchor),
             labelNameService.leadingAnchor.constraint(equalTo: imageViewService.trailingAnchor, constant: 15),
-           // labelNameService.heightAnchor.constraint(equalToConstant: 20),
             labelNameService.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor,constant: -10),
             
             
             labelDescriptionService.topAnchor.constraint(equalTo: labelNameService.bottomAnchor, constant: 1),
             labelDescriptionService.leadingAnchor.constraint(equalTo: labelNameService.leadingAnchor),
             labelDescriptionService.trailingAnchor.constraint(equalTo: labelNameService.trailingAnchor),
-           // labelDescriptionService.heightAnchor.constraint(equalToConstant: 60),
             labelDescriptionService.bottomAnchor.constraint(lessThanOrEqualTo: imageViewService.bottomAnchor)
         ])
     }

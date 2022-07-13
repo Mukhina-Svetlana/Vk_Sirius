@@ -66,17 +66,49 @@
 			children = (
 				AEC52BD8287F0F9600BB4039 /* AppDelegate.swift */,
 				AEC52BDA287F0F9600BB4039 /* SceneDelegate.swift */,
-				AEC52BDC287F0F9600BB4039 /* MainViewController.swift */,
-				AEC52BF0287F4AC100BB4039 /* ModelFromURL.swift */,
-				AEC52BF2287F4B9A00BB4039 /* NetworkServices.swift */,
-				AEC52BEE287F1F4300BB4039 /* CustomTableViewCell.swift */,
-				AEC52BF4287F5C2900BB4039 /* CustomImageViewAPI.swift */,
-				AEC52BEC287F1D0B00BB4039 /* Model.swift */,
+				AEC52BF6287F8DF100BB4039 /* Models */,
+				AEC52BF8287F8E4200BB4039 /* Views */,
+				AEC52BF9287F8E5B00BB4039 /* Controllers */,
+				AEC52BFA287F8E6700BB4039 /* Servises */,
 				AEC52BE1287F0F9A00BB4039 /* Assets.xcassets */,
 				AEC52BE3287F0F9A00BB4039 /* LaunchScreen.storyboard */,
 				AEC52BE6287F0F9A00BB4039 /* Info.plist */,
 			);
 			path = Vk_Sirius;
+			sourceTree = "<group>";
+		};
+		AEC52BF6287F8DF100BB4039 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AEC52BEC287F1D0B00BB4039 /* Model.swift */,
+				AEC52BF0287F4AC100BB4039 /* ModelFromURL.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AEC52BF8287F8E4200BB4039 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AEC52BEE287F1F4300BB4039 /* CustomTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AEC52BF9287F8E5B00BB4039 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AEC52BDC287F0F9600BB4039 /* MainViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AEC52BFA287F8E6700BB4039 /* Servises */ = {
+			isa = PBXGroup;
+			children = (
+				AEC52BF2287F4B9A00BB4039 /* NetworkServices.swift */,
+				AEC52BF4287F5C2900BB4039 /* CustomImageViewAPI.swift */,
+			);
+			path = Servises;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
