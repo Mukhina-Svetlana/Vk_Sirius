@@ -22,6 +22,7 @@ class MainViewController: UIViewController {
         tableView.estimatedRowHeight = 85
         tableView.separatorStyle = .none
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: cellIdentity)
         return tableView
     }()
@@ -31,6 +32,18 @@ class MainViewController: UIViewController {
         configuration()
         
 
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        NetworkServices.shared.alert = {
+            let alert = UIAlertController(title: "Ошибка!", message: "Запрос не может быть выполнен. Проверьте соединение!", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .default) { action in
+                self.navigationController?.popViewController(animated: true)
+            }
+            alert.addAction(ok)
+            self.present(alert, animated: false, completion: nil)
+        }
     }
 }
 
@@ -44,6 +57,7 @@ extension MainViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
+        
         
         NetworkServices.shared.getData(completion: { model in
             self.models = model
@@ -66,9 +80,19 @@ extension MainViewController: UITableViewDataSource {
         cell.accessoryType = .disclosureIndicator
         return cell
     }
-    
-    
    
     
+}
+
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let application = UIApplication.shared
+        if let url = URL(string: "\(models[indexPath.row].labelService)://"), application.canOpenURL(url) {
+                    application.open(url, options: [:], completionHandler: nil)
+                } else if let itunesUrl = URL(string: models[indexPath.row].link), application.canOpenURL(itunesUrl) {
+                   application.open(itunesUrl, options: [:], completionHandler: nil)
+
+                }
+    }
 }
 

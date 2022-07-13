@@ -19,5 +19,27 @@
 			</array>
 		</dict>
 	</dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string></string>
+		</dict>
+	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>vk</string>
+		<string>ula</string>
+		<string>Юла</string>
+		<string>ВКонтакте</string>
+		<string>My.Games</string>
+		<string>Сферум</string>
+		<string>Самокат</string>
+		<string>Ситидрайв</string>
+		<string>Облако</string>
+		<string>Все аптеки</string>
+		<string>Календарь</string>
+		<string>RESO</string>
+	</array>
 </dict>
 </plist>

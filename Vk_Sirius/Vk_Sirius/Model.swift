@@ -12,10 +12,12 @@ struct Model {
     var labelService: String
     var descriptionService: String
     var imageService: String
+    var link: String
     
     init (data: Service) {
         labelService = data.name
         descriptionService = data.serviceDescription
         imageService = data.iconURL
+        link = data.link
     }
 }
