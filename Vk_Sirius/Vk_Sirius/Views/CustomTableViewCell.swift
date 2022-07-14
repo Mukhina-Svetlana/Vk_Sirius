@@ -24,9 +24,9 @@ class CustomTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
-        label.adjustsFontSizeToFitWidth = true
+        //label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 13)
+        label.font = .systemFont(ofSize: 14)
         label.textAlignment = .left
         return label
     }()
@@ -64,19 +64,19 @@ extension CustomTableViewCell {
         NSLayoutConstraint.activate([
             imageViewService.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             imageViewService.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            imageViewService.heightAnchor.constraint(equalToConstant: 55),
+            imageViewService.heightAnchor.constraint(equalToConstant: 70),
             imageViewService.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -10),
-            imageViewService.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/7),
+            imageViewService.widthAnchor.constraint(equalTo: imageViewService.heightAnchor),
             
             labelNameService.topAnchor.constraint(equalTo: imageViewService.topAnchor),
             labelNameService.leadingAnchor.constraint(equalTo: imageViewService.trailingAnchor, constant: 15),
-            labelNameService.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor,constant: -10),
+            labelNameService.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor,constant: -30),
+            labelNameService.heightAnchor.constraint(equalToConstant: 19),
             
             
-            labelDescriptionService.topAnchor.constraint(equalTo: labelNameService.bottomAnchor, constant: 1),
+            labelDescriptionService.topAnchor.constraint(equalTo: labelNameService.bottomAnchor, constant: 3),
             labelDescriptionService.leadingAnchor.constraint(equalTo: labelNameService.leadingAnchor),
             labelDescriptionService.trailingAnchor.constraint(equalTo: labelNameService.trailingAnchor),
-            labelDescriptionService.bottomAnchor.constraint(lessThanOrEqualTo: imageViewService.bottomAnchor)
         ])
     }
 }
