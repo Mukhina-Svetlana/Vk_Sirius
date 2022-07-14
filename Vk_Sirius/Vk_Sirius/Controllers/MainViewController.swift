@@ -71,10 +71,10 @@ extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentity, for: indexPath) as? CustomTableViewCell else {return UITableViewCell()}
-        cell.textForEachCell(nameService: models[indexPath.row].labelService, descriptionService: models[indexPath.row].descriptionService)
         cell.imageViewService.set(imageURL: models[indexPath.row].imageService) { [weak self] image in
             self?.images.append(image)
         }
+        cell.textForEachCell(nameService: models[indexPath.row].labelService, descriptionService: models[indexPath.row].descriptionService)
         cell.accessoryType = .disclosureIndicator
         return cell
     }
