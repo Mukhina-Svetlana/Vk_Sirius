@@ -10,8 +10,13 @@ import UIKit
 class MainViewController: UIViewController {
     
     private var models = [Model]()
-    private var images = [UIImage]()
     private lazy var cellIdentity = "cell"
+    
+    private lazy var actyvityIndicator: UIActivityIndicatorView = {
+        let activ = UIActivityIndicatorView()
+        activ.translatesAutoresizingMaskIntoConstraints = false
+        return activ
+    }()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -27,6 +32,8 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        actyvityIndicator.hidesWhenStopped = true
+        actyvityIndicator.startAnimating()
         configuration()
     }
     
@@ -47,11 +54,15 @@ extension MainViewController {
     private func configuration() {
         title = "Сервисы VK"
         view.addSubview(tableView)
+        view.addSubview(actyvityIndicator)
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            actyvityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            actyvityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
         
         NetworkServices.shared.getData(completion: { model in
@@ -71,9 +82,8 @@ extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentity, for: indexPath) as? CustomTableViewCell else {return UITableViewCell()}
-        cell.imageViewService.set(imageURL: models[indexPath.row].imageService) { [weak self] image in
-            self?.images.append(image)
-        }
+        actyvityIndicator.stopAnimating()
+        cell.imageViewService.downloadImage(from: (URL(string: models[indexPath.row].imageServiceUrl) ?? URL(string: "https://proprikol.ru/wp-content/uploads/2020/08/krasivye-kartinki-kotov-46.jpg"))!)
         cell.textForEachCell(nameService: models[indexPath.row].labelService, descriptionService: models[indexPath.row].descriptionService)
         cell.accessoryType = .disclosureIndicator
         return cell

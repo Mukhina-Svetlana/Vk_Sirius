@@ -11,13 +11,13 @@ import UIKit
 struct Model {
     var labelService: String
     var descriptionService: String
-    var imageService: String
+    var imageServiceUrl: String
     var link: String
     
     init (data: Service) {
         labelService = data.name
         descriptionService = data.serviceDescription
-        imageService = data.iconURL
+        imageServiceUrl = data.iconURL
         link = data.link
     }
 }

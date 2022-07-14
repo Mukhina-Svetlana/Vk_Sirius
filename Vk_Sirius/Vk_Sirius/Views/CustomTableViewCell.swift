@@ -31,8 +31,8 @@ class CustomTableViewCell: UITableViewCell {
         return label
     }()
     
-    lazy var imageViewService: CustomImageViewAPI = {
-        let image = CustomImageViewAPI()
+    lazy var imageViewService: ImageFromUrl = {
+        let image = ImageFromUrl()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.clipsToBounds = true
         image.layer.cornerRadius = 13
