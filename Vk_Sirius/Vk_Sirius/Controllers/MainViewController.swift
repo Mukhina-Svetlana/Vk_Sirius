@@ -83,7 +83,7 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let application = UIApplication.shared
-        if let url = URL(string: "My.Games://"), application.canOpenURL(url) {
+        if let url = URL(string: "\(models[indexPath.row].labelService)://"), application.canOpenURL(url) {
                     application.open(url, options: [:], completionHandler: nil)
                 } else if let itunesUrl = URL(string: models[indexPath.row].link), application.canOpenURL(itunesUrl) {
                    application.open(itunesUrl, options: [:], completionHandler: nil)
